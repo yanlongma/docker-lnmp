@@ -1,0 +1,49 @@
+version: "3.0"
+services:
+  nginx:
+    image: nginx:alpine
+    ports: 
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ../:/var/www
+
+  php-fpm:
+    build: ./php-fpm
+    ports:
+        - 9000:9000
+    volumes:
+      - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ../:/var/www
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/data:/data
+      #- ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+
+  mongo:
+    image: mongo
+    ports: 
+      - 27017:27017
+    volumes:
+      - ./mongo/data:/data/db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+
