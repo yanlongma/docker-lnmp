@@ -39,4 +39,4 @@ $ docker-compose down
 
 ## 配置虚拟主机
 
-参考 `nignx/conf.d/yii.conf` 文件。
+请参考 `nignx/conf.d/yii.conf` 文件，配置完需重启服务。
