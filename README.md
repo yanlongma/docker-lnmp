@@ -34,7 +34,7 @@ Creating dockerlnmp_mysql_1   ... done
 
 进入 docker-lnmp 目录，关闭服务：
 ``` 
-$docker-compose down
+$ docker-compose down
 ```
 
 ## 配置虚拟主机
