@@ -33,6 +33,7 @@ RUN docker-php-ext-install \
         pdo_mysql \
         mysqli \
         pcntl \
+        sockets\
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
 
@@ -47,9 +48,7 @@ RUN pecl install redis-4.2.0 \
 RUN apk del build-base \
     	linux-headers \
     	libaio-dev \
-    && rm -rf /var/cache/apk/* \
-    && mkdir /data \
-    && chmod -R 777 /data
+    && rm -rf /var/cache/apk/*
 
 VOLUME /var/www
 WORKDIR /var/www
