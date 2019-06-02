@@ -1,5 +1,6 @@
 FROM php:7.1-fpm-alpine
 
+
 # apk
 RUN apk --update add \
         autoconf \
@@ -27,6 +28,7 @@ RUN apk --update add \
         wget \
         libmemcached-dev
 
+
 # PHP Core Extensions
 RUN docker-php-ext-install \
         bcmath \
@@ -34,8 +36,11 @@ RUN docker-php-ext-install \
         mysqli \
         pcntl \
         sockets\
+        opcache \
+        mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
+
 
 # PECL Extensions
 RUN pecl install redis-4.2.0 \
@@ -44,14 +49,23 @@ RUN pecl install redis-4.2.0 \
     && pecl install swoole-4.3.1 \
     && docker-php-ext-enable redis mongodb memcached swoole
 
+
+# Composer
+RUN curl -sS http://getcomposer.org/installer | php \
+    && mv ./composer.phar /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+
 # Delete
 RUN apk del build-base \
     	linux-headers \
     	libaio-dev \
     && rm -rf /var/cache/apk/*
 
+
 VOLUME /var/www
 WORKDIR /var/www
+
 
 EXPOSE 9000
 CMD ["php-fpm"]
