@@ -13,7 +13,9 @@ Docker LNMP 包含以下服务，每种服务支持多个版本：
 - memcached (1.5.16 - 1.5 - 1)
 
 其中：
+
 php-fpm 默认是 7.1 版本，如需使用其它版本，配置 `.env` 文件中 `PHP_VERSION` 即可；
+
 mysql 默认是 5.7 版本，如需使用其它版本，配置 `.env` 文件中 `MYSQL_VERSION` 即可；
 
 
