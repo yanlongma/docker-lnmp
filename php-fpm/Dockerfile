@@ -1,7 +1,16 @@
-FROM php:7.1-fpm-alpine
+###########################################################################
+# PHP-FPM Version Of Alpine:
+###########################################################################
 
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}-fpm-alpine
 
-# apk
+LABEL maintainer="YanlongMa <json_vip@163.com>"
+
+###########################################################################
+# System Extensions:
+###########################################################################
+
 RUN apk --update add \
         autoconf \
         build-base \
@@ -10,7 +19,6 @@ RUN apk --update add \
         zlib-dev \
         curl \
         git \
-        subversion \
         freetype-dev \
         libjpeg-turbo-dev \
         libmcrypt-dev \
@@ -29,34 +37,90 @@ RUN apk --update add \
         libmemcached-dev
 
 
-# PHP Core Extensions
+###########################################################################
+# PHP Core Extensions:
+###########################################################################
+
+# Core Extensions For Default Installation:
 RUN docker-php-ext-install \
         bcmath \
         pdo_mysql \
         mysqli \
-        pcntl \
-        sockets\
-        opcache \
-        mcrypt \
+        sockets \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd
 
 
-# PECL Extensions
-RUN pecl install redis-4.2.0 \
-    && pecl install mongodb-1.5.3 \
-    && pecl install memcached-3.1.3 \
-    && pecl install swoole-4.3.1 \
-    && docker-php-ext-enable redis mongodb memcached swoole
+# Core Extensions pcntl:
+ARG INSTALL_PCNTL=false
+RUN if [ ${INSTALL_PCNTL} = true ]; then \
+    docker-php-ext-install pcntl \
+;fi
 
 
-# Composer
-RUN curl -sS http://getcomposer.org/installer | php \
+# Core Extensions opcache:
+ARG INSTALL_OPCACHE=false
+RUN if [ ${INSTALL_OPCACHE} = true ]; then \
+    docker-php-ext-install opcache \
+;fi
+
+
+###########################################################################
+# PHP PECL Extensions:
+###########################################################################
+
+# PECL Extensions reids:
+ARG INSTALL_REDIS=false
+ARG INSTALL_REDIS_VERSION
+RUN if [ ${INSTALL_REDIS} = true ]; then \
+    pecl install redis-${INSTALL_REDIS_VERSION} \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable redis \
+;fi
+
+
+# PECL Extensions mongodb:
+ARG INSTALL_MONGODB=false
+ARG INSTALL_MONGODB_VERSION
+RUN if [ ${INSTALL_MONGODB} = true ]; then \
+    pecl install mongodb-${INSTALL_MONGODB_VERSION} \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable mongodb \
+;fi
+
+
+# PECL Extensions memcached:
+ARG INSTALL_MEMCACHED=false
+ARG INSTALL_MEMCACHED_VERSION
+RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
+    pecl install memcached-${INSTALL_MEMCACHED_VERSION} \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable memcached \
+;fi
+
+
+# PECL Extensions swoole:
+ARG INSTALL_SWOOLE=false
+ARG INSTALL_SWOOLE_VERSION
+RUN if [ ${INSTALL_SWOOLE} = true ]; then \
+    pecl install swoole-${INSTALL_SWOOLE_VERSION} \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable swoole \
+;fi
+
+
+###########################################################################
+# Composer:
+###########################################################################
+
+ARG INSTALL_COMPOSER=false
+RUN if [ ${INSTALL_COMPOSER} = true ]; then \
+    curl -sS http://getcomposer.org/installer | php \
     && mv ./composer.phar /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com
+    && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+;fi
 
 
-# Delete
 RUN apk del build-base \
     	linux-headers \
     	libaio-dev \
