@@ -19,7 +19,7 @@ php-fpm 默认是 7.1 版本，如需使用其它版本，配置 `.env` 文件�
 mysql 默认是 5.7 版本，如需使用其它版本，配置 `.env` 文件中 `MYSQL_VERSION` 即可；
 
 
-## 下载 Docker LNMP
+## 下载使用
 
 Docker LNMP 默认将同级目录映射到 php-fpm 容器的工作目录，在项目的同级目录下载 Docker LNMP：
 ```
