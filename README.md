@@ -1,6 +1,11 @@
 # 使用 Docker LNMP 部署 PHP 运行环境
 
 
+## 项目介绍
+
+Docker LNMP 是基于 docker-compose 开发的运行在 Docker 上的 LNMP 开发环境，支持 PHP、MySQL、Redis 等软件进行多版本切换，满足您的开发和测试需求。
+
+
 ## 包含服务
 
 Docker LNMP 包含以下服务，每种服务支持多个版本：
