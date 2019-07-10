@@ -1,4 +1,4 @@
-# 使用 Docker LNMP 部署 PHP 开发环境
+# 使用 Docker LNMP 部署 PHP 运行环境
 
 
 ## 包含以下服务
