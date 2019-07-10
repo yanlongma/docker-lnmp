@@ -34,7 +34,7 @@ $ git clone https://github.com/yanlongma/docker-lnmp.git
 生成配置文件 `.env`
 ```
 $ cd docker-lnmp
-$ cp env-example .env
+$ cp env-template .env
 ```
 
 如需映射到其它目录，配置 `.env` 文件中 `WEB_ROOT_PATH` 即可。
