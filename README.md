@@ -1,7 +1,7 @@
 # 使用 Docker LNMP 部署 PHP 运行环境
 
 
-## 包含以下服务
+## 包含服务
 
 Docker LNMP 包含以下服务，每种服务支持多个版本：
 
@@ -37,7 +37,7 @@ $ cp env-example .env
 
 ## 启动服务
 
-进入 docker-lnmp 目录，启动服务 nginx：
+进入 docker-lnmp 目录，启动服务，命令如下：
 ``` 
 $ docker-compose up -d nginx
 Creating network "docker-lnmp_default" with the default driver
@@ -53,7 +53,7 @@ nginx 默认会启动 php-fpm 和 mysql 服务，如需启动其它服务请手�
 
 ## 关闭服务
 
-进入 docker-lnmp 目录，关闭服务：
+进入 docker-lnmp 目录，关闭服务，命令如下：
 ``` 
 $ docker-compose down
 ```
