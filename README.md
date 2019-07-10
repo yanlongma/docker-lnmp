@@ -26,6 +26,12 @@ Docker LNMP 默认将同级目录映射到 php-fpm 容器的工作目录，在�
 $ git clone https://github.com/yanlongma/docker-lnmp.git
 ```
 
+生成配置文件 `.env`
+```
+$ cd docker-lnmp
+$ cp env-example .env
+```
+
 如需映射到其它目录，配置 `.env` 文件中 `WEB_ROOT_PATH` 即可。
 
 
@@ -53,6 +59,21 @@ $ docker-compose down
 ```
 
 
+## 构建服务
+
+如修改 dockerfile 文件，需重新构建服务，如重新构建 php-fpm 命令如下：
+```
+$ docker-compose build php-fpm
+```
+
+建议先关闭服务，构建完成再重启服务。
+
+
 ## 配置虚拟主机
 
 请参考 `nignx/sites/yii.conf` 文件，配置完需重启服务。
+
+
+## License
+
+[MIT license](https://opensource.org/licenses/MIT)
