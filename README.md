@@ -35,7 +35,7 @@ $ cp env-example .env
 如需映射到其它目录，配置 `.env` 文件中 `WEB_ROOT_PATH` 即可。
 
 
-## 启动 Docker LNMP
+## 启动服务
 
 进入 docker-lnmp 目录，启动服务 nginx：
 ``` 
@@ -51,7 +51,7 @@ nginx 默认会启动 php-fpm 和 mysql 服务，如需启动其它服务请手�
 启动成功后，在 docker-lnmp 同级目录新建 phpinfo.php 文件，浏览器访问 `http://localhost/phpinfo.php`，则可看到 phpinfo() 相关信息。
 
 
-## 关闭 Docker LNMP
+## 关闭服务
 
 进入 docker-lnmp 目录，关闭服务：
 ``` 
@@ -69,9 +69,9 @@ $ docker-compose build php-fpm
 建议先关闭服务，构建完成再重启服务。
 
 
-## 配置虚拟主机
+## 虚拟主机
 
-请参考 `nignx/sites/yii.conf` 文件，配置完需重启服务。
+配置虚拟主机请参考 `nignx/sites/yii.conf` 文件，配置完需重启服务。
 
 
 ## License
