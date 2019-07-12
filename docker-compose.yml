@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/sites:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
       - ${WEB_ROOT_PATH}:/var/www
     depends_on:
       - php-fpm
