@@ -31,11 +31,14 @@ services:
         - INSTALL_MEMCACHED_VERSION=${PHP_INSTALL_MEMCACHED_VERSION}
         - INSTALL_SWOOLE=${PHP_INSTALL_SWOOLE}
         - INSTALL_SWOOLE_VERSION=${PHP_INSTALL_SWOOLE_VERSION}
+        - INSTALL_XUNSEARCH=${PHP_INSTALL_XUNSEARCH}
         - INSTALL_COMPOSER=${PHP_INSTALL_COMPOSER}
     ports:
       - 9000:9000
     volumes:
-      - ./php-fpm/conf-${PHP_VERSION}:/usr/local/etc/
+      - ./php-fpm/conf-${PHP_VERSION}/php.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/conf-${PHP_VERSION}/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php-fpm/conf-${PHP_VERSION}/php-fpm.d:/usr/local/etc/php-fpm.d
       - ${WEB_ROOT_PATH}:/var/www
 
   mysql:
