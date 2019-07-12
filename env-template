@@ -7,7 +7,7 @@ WEB_ROOT_PATH=../
 ### PHP Version ###########################################
 
 # support 7.3 - 7.2 - 7.1 - 5.6
-PHP_VERSION=7.1
+PHP_VERSION=7.3
 
 
 ### PHP Extensions ########################################
@@ -37,6 +37,7 @@ PHP_INSTALL_MEMCACHED_VERSION=3.1.2
 PHP_INSTALL_SWOOLE=flase
 PHP_INSTALL_SWOOLE_VERSION=4.2.13
 
+PHP_INSTALL_XUNSEARCH=false
 PHP_INSTALL_COMPOSER=false
 
 

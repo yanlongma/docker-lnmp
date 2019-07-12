@@ -110,9 +110,32 @@ RUN if [ ${INSTALL_SWOOLE} = true ]; then \
 
 
 ###########################################################################
-# Composer:
+# PHP Thrid Extensions:
 ###########################################################################
 
+# Thrid Extensions Xunsearch:
+ARG INSTALL_XUNSEARCH=false
+RUN if [ ${INSTALL_XUNSEARCH} = true ]; then \
+    curl 'http://www.xunsearch.com/scws/down/scws-1.2.3.tar.bz2' -o scws.tar.bz2 \
+    && tar xvjf scws.tar.bz2 \
+    && cd scws-1.2.3 \
+    && ./configure --prefix=/usr/local/scws \
+    && make \
+    && make install \
+    && cd phpext \
+    && phpize \
+    && ./configure --with-scws=/usr/local/scws \
+    && make \
+    && make install \
+    && cd ../../ \
+    && rm -rf scws scws-1.2.3.tar.bz2 \
+    && docker-php-ext-enable scws \
+    && echo "scws.default.charset = utf8" >> /usr/local/etc/php/conf.d/docker-php-ext-scws.ini \
+    && echo "scws.default.fpath = /usr/local/scws/etc" >> /usr/local/etc/php/conf.d/docker-php-ext-scws.ini \
+;fi
+
+
+# Composer:
 ARG INSTALL_COMPOSER=false
 RUN if [ ${INSTALL_COMPOSER} = true ]; then \
     curl -sS http://getcomposer.org/installer | php \
