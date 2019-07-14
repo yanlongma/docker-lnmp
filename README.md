@@ -1,14 +1,14 @@
 # 使用 Docker LNMP 部署 PHP 运行环境
 
 
-## 项目介绍
+## 项目简介
 
-Docker LNMP 是基于 docker-compose 开发的运行在 Docker 上的 LNMP 开发环境，支持 PHP、MySQL、Redis 等软件进行多版本切换，满足您的开发和测试需求。
+Docker LNMP 是基于 docker-compose 开发的运行在 Docker 上的 LNMP 开发环境，包含 PHP、MySQL、Redis 等镜像并支持多版本切换，满足您的学习、开发和测试需求。
 
 
-## 包含服务
+## 包含镜像
 
-Docker LNMP 包含以下服务，每种服务支持多个版本：
+Docker LNMP 包含以下镜像，每种镜像支持多个版本：
 
 - nginx 
 - php-fpm (7.3 - 7.2 - 7.1 - 5.6)
@@ -31,7 +31,7 @@ Docker LNMP 默认将同级目录映射到 php-fpm 容器的工作目录，在�
 $ git clone https://github.com/yanlongma/docker-lnmp.git
 ```
 
-生成配置文件 `.env`
+进入 docker-lnmp 目录，生成配置文件 `.env`
 ```
 $ cd docker-lnmp
 $ cp env-template .env
@@ -42,7 +42,7 @@ $ cp env-template .env
 
 ## 启动服务
 
-进入 docker-lnmp 目录，启动服务，命令如下：
+在 docker-lnmp 目录，启动服务，命令如下：
 ``` 
 $ docker-compose up -d nginx
 Creating network "docker-lnmp_default" with the default driver
@@ -58,7 +58,7 @@ nginx 默认会启动 php-fpm 和 mysql 服务，如需启动其它服务请手�
 
 ## 关闭服务
 
-进入 docker-lnmp 目录，关闭服务，命令如下：
+在 docker-lnmp 目录，关闭服务，命令如下：
 ``` 
 $ docker-compose down
 ```
@@ -76,7 +76,7 @@ $ docker-compose build php-fpm
 
 ## 虚拟主机
 
-配置虚拟主机请参考 `nignx/sites/yii.conf` 文件，配置完需重启服务。
+配置虚拟主机请参考 `nignx/sites/yii.conf` 文件，配置完需构建并重启服务。
 
 
 ## License
