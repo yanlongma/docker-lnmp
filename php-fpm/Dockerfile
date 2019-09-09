@@ -140,9 +140,8 @@ ARG INSTALL_COMPOSER=false
 RUN if [ ${INSTALL_COMPOSER} = true ]; then \
     curl -sS http://getcomposer.org/installer | php \
     && mv ./composer.phar /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer \
 ;fi
-
 
 RUN apk del build-base \
     	linux-headers \
