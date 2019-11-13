@@ -19,7 +19,7 @@ Docker LNMP 包含以下镜像，每种镜像支持多个版本：
 
 其中：
 
-php-fpm 默认是 7.1 版本，如需使用其它版本，配置 `.env` 文件中 `PHP_VERSION` 即可；
+php-fpm 默认是 7.2 版本，如需使用其它版本，配置 `.env` 文件中 `PHP_VERSION` 即可；
 
 mysql 默认是 5.7 版本，如需使用其它版本，配置 `.env` 文件中 `MYSQL_VERSION` 即可；
 
