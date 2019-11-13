@@ -76,7 +76,7 @@ $ docker-compose build php-fpm
 
 ## 虚拟主机
 
-配置虚拟主机请参考 `nignx/sites/yii.conf` 文件，配置完需构建并重启服务。
+配置虚拟主机请参考 `nignx/sites/laravel.conf` 文件，配置完需构建并重启服务。
 
 
 ## License
