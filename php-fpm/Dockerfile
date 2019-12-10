@@ -8,6 +8,10 @@ FROM php:${PHP_VERSION}-fpm-alpine
 LABEL maintainer="YanlongMa <json_vip@163.com>"
 
 
+###########################################################################
+# Alpine Aliyun Mirrors:
+###########################################################################
+
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 
