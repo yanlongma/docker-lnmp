@@ -11,7 +11,7 @@ Docker LNMP 是基于 docker-compose 开发的运行在 Docker 上的 LNMP 开�
 Docker LNMP 包含以下镜像，每种镜像支持多个版本：
 
 - nginx 
-- php-fpm (7.3 - 7.2 - 7.1 - 5.6)
+- php-fpm (7.4 - 7.3 - 7.2 - 7.1 - 5.6)
 - mysql (8.0 - 5.7 - 5.6)
 - mongo 
 - redis (5.0 - 4.0)
