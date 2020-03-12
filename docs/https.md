@@ -5,7 +5,7 @@ Nginx 虚拟主机基本配置请参考 [Nginx 配置虚拟主机](vhost.md) 小
 
 ## 申请 SSL 证书
 
-申请 SSL 证书的平台自选，本处将申请的证书命名如下：
+申请 SSL 证书的平台自选，本人将申请的证书命名如下：
 - laravel.local.pem
 - laravel.local.key
 

@@ -76,11 +76,9 @@ $ docker-compose build php-fpm
 
 ## 虚拟主机
 
-Nginx 虚拟主机相关配置请参考如下文档，配置完需重启服务：
+Nginx 虚拟主机相关配置请参考如下文档，配置完需重启服务，完整配置请参考 `nignx/sites/laravel.conf` 文件：
 - [Nginx 配置虚拟主机](./docs/vhost.md)
 - [Nginx 配置 HTTPS](./docs/https.md)
-
-完整配置文件请参考 `nignx/sites/laravel.conf` 文件。
 
 
 ## License
