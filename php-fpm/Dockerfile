@@ -39,7 +39,9 @@ RUN apk --update add \
         libxslt-dev \
         openldap-dev \
         imagemagick-dev \
+        libzip-dev \
         make \
+        zip \
         unzip \
         wget \
         libmemcached-dev
@@ -70,6 +72,18 @@ RUN if [ ${INSTALL_PCNTL} = true ]; then \
 ARG INSTALL_OPCACHE=false
 RUN if [ ${INSTALL_OPCACHE} = true ]; then \
     docker-php-ext-install opcache \
+;fi
+
+
+# Core Extensions zip:
+ARG INSTALL_ZIP=false
+RUN if [ ${INSTALL_ZIP} = true ]; then \
+    if [ ${PHP_VERSION} = "7.3" ] || [ ${PHP_VERSION} = "7.4" ]; then \
+        docker-php-ext-configure zip \
+    else \
+        docker-php-ext-configure zip --with-libzip \
+    ;fi \
+    && docker-php-ext-install zip \
 ;fi
 
 
