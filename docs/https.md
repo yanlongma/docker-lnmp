@@ -9,7 +9,11 @@ Nginx 虚拟主机基本配置请参考 [Nginx 配置虚拟主机](vhost.md) 小
 - laravel.local.pem
 - laravel.local.key
 
-并将证书放到 docker-lnmp/nginx/ssl 目录下。
+并将证书放到 docker-lnmp/nginx/ssl 目录下：
+```
+cp -i 你的目录/laravel.local.pem 你的目录/docker-lnmp/nginx/ssl/
+cp -i 你的目录/laravel.local.key 你的目录/docker-lnmp/nginx/ssl/
+```
 
 
 ## 添加 server 配置
