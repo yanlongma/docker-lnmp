@@ -52,13 +52,20 @@ RUN apk --update add \
 ###########################################################################
 
 # Core Extensions For Default Installation:
+#RUN docker-php-ext-install \
+#        bcmath \
+#        pdo_mysql \
+#        mysqli \
+#        sockets \
+#    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+#    && docker-php-ext-install gd
 RUN docker-php-ext-install \
         bcmath \
         pdo_mysql \
         mysqli \
         sockets \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install gd
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
 
 # Core Extensions pcntl:
