@@ -20,6 +20,7 @@ services:
 
   php-fpm:
     container_name: lnmp-php-pfm
+    privileged: true
     build:
       context: ./php-fpm
       args:
