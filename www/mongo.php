@@ -9,5 +9,4 @@ $bulk->insert(['x' => 2, 'name'=>'Google', 'url' => 'http://www.google.com']);
 $bulk->insert(['x' => 3, 'name'=>'taobao', 'url' => 'http://www.taobao.com']);
 $result = $manager->executeBulkWrite('test-db.test-sites', $bulk);
 
-
 var_dump($result);
