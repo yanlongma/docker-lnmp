@@ -19,7 +19,7 @@ PHP_INSTALL_ZIP=true
 # http://pecl.php.net/package/redis
 # support php8.0+ (5.3.6)
 # support php5.6+ (5.0.0 - 4.3.0 - 4.2.0 - 3.1.6)
-PHP_INSTALL_REDIS=false
+PHP_INSTALL_REDIS=true
 PHP_INSTALL_REDIS_VERSION=5.3.6
 
 # http://pecl.php.net/package/mongodb
@@ -67,7 +67,7 @@ MONGO_ROOT_PASSWORD=123456
 ### Redis ###########################################
 
 # https://hub.docker.com/_/redis
-# support 5.0 - 4.0
+# support 7.0 - 6.0 - 5.0 - 4.0
 REDIS_VERSION=5.0
 REDIS_PORT=6379
 
