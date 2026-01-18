@@ -45,6 +45,33 @@ services:
       - ./php-fpm/conf-${PHP_VERSION}/php-fpm.d:/usr/local/etc/php-fpm.d
       - ${WEB_ROOT_PATH}:/var/www
 
+  php85:
+    container_name: lnmp-php85
+    build:
+      context: ./php-fpm
+      args:
+        - PHP_VERSION=8.5
+        - INSTALL_PCNTL=${PHP_INSTALL_PCNTL}
+        - INSTALL_OPCACHE=${PHP_INSTALL_OPCACHE}
+        - INSTALL_ZIP=${PHP_INSTALL_ZIP}
+        - INSTALL_REDIS=${PHP_INSTALL_REDIS}
+        - INSTALL_REDIS_VERSION=${PHP_INSTALL_REDIS_VERSION}
+        - INSTALL_MONGODB=${PHP_INSTALL_MONGODB}
+        - INSTALL_MONGODB_VERSION=${PHP_INSTALL_MONGODB_VERSION}
+        - INSTALL_MEMCACHED=${PHP_INSTALL_MEMCACHED}
+        - INSTALL_MEMCACHED_VERSION=${PHP_INSTALL_MEMCACHED_VERSION}
+        - INSTALL_SWOOLE=${PHP_INSTALL_SWOOLE}
+        - INSTALL_SWOOLE_VERSION=${PHP_INSTALL_SWOOLE_VERSION}
+        - INSTALL_XUNSEARCH=${PHP_INSTALL_XUNSEARCH}
+        - INSTALL_COMPOSER=${PHP_INSTALL_COMPOSER}
+    ports:
+      - 9085:9000
+    volumes:
+      - ./php-fpm/conf-${PHP_VERSION}/php.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/conf-${PHP_VERSION}/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php-fpm/conf-${PHP_VERSION}/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ${WEB_ROOT_PATH}:/var/www
+
   mysql:
     container_name: lnmp-mysql
     build:
